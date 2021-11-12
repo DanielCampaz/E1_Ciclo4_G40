@@ -1,8 +1,9 @@
-<h6>Proyecto Ciclo 4 Equipo 1</h6>
+<h1>Proyecto Ciclo 4 Equipo 1</h1>
 <br>
-<h4>INTEGRANTES DEL EQUIPO Y ROLES</h4>
+<h3>INTEGRANTES DEL EQUIPO Y ROLES</h3>
 <br>
-<h2> Lina Rocio Mosquera Garcia - Administradora de Configuración - Tester </h2>
-<h2> Daniela Robles - Diseñadora UI - Tester</h2>
-<h2> Diego Vargas - Diseñador de Software - Tester</h2>
-<h2> Daniel Campaz - Lider - Tester</h2>
+<h5> Lina Rocio Mosquera Garcia - Administradora de Configuración - Tester </h5>
+<h5> Daniela Robles - Diseñadora UI</h5>
+<h5> Diego Vargas - Diseñador de Software</h5>
+<h5> Daniel Campaz - Lider</h5>
+<h5> Todos Somos Desarrolladores y Tester</h5>
