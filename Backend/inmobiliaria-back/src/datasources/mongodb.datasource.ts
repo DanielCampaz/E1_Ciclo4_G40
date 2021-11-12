@@ -1,10 +1,11 @@
 import {inject, lifeCycleObserver, LifeCycleObserver} from '@loopback/core';
 import {juggler} from '@loopback/repository';
+import { General } from '../recurso/General';
 
 const config = {
   name: 'mongodb',
   connector: 'mongodb',
-  url: '',
+  url: General.url_con_mongo,
   host: '',
   port: 0,
   user: '',
