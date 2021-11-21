@@ -5,4 +5,5 @@ export * from './inmueble-imagen.controller';
 export * from './inmueble.controller';
 export * from './usuario.controller';
 export * from './imagen.controller';
+export * from './ubicacion.controller';
 export * from './zona.controller';

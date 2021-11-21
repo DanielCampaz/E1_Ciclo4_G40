@@ -51,6 +51,18 @@ export class Zona extends Entity {
   })
   estrato: string;
 
+  @property({
+    type: 'string',
+    required: true,
+  })
+  nombre: string;
+
+  @property({
+    type: 'string',
+    required: true,
+  })
+  ubicacion: string;
+
   @hasOne(() => Inmueble, {keyTo: 'id_zona'})
   zona: Inmueble;
 
