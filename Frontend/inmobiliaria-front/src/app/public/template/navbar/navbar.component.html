@@ -1,17 +1,21 @@
-<nav>
-    <div class="nav-wrapper light-blue accent-3">
-      <a href="#!" class="brand-logo">Logo</a>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="#">Ingresar</a></li>
-        <li><a href="#">Registrarse</a></li>
-        <li><a href="#">Cerrar Sesion</a></li>
-      </ul>
-    </div>
-  </nav>
+<nav class="light-blue accent-3">
+  <div class="container ">
+  <div class="row">
+  <div class="nav-wrapper ">
+    <a routerLink="#!" class="brand-logo col l6 s12">Logo</a>
+    <a routerLink="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <ul class="right hide-on-med-and-down">
+      <li><a routerLink="/singup">Ingresar</a></li>
+      <li><a routerLink="#">Registrarse</a></li>
+      <li><a routerLink="#">Cerrar Sesion</a></li>
+    </ul>
+  </div>
+</div>
+</div>
+</nav>
 
-  <ul class="sidenav" id="mobile-demo">
-    <li><a href="#">Ingresar</a></li>
-    <li><a href="#">Registrarse</a></li>
-    <li><a href="#">Cerrar Sesion</a></li>
-  </ul>
+<ul class="sidenav" id="mobile-demo">
+  <li><a routerLink="#">Ingresar</a></li>
+  <li><a routerLink="#">Registrarse</a></li>
+  <li><a routerLink="#">Cerrar Sesion</a></li>
+</ul>
