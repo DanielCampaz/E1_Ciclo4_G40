@@ -17,16 +17,8 @@ const routes: Routes = [
     redirectTo: "/home"
   },
   {
-    path: "singup",
-    component: SignUpComponent 
-  },
-  {
-    path: "login",
-    component: LoginComponent
-  },
-  {
-    path: "resetPasword",
-    component: ResetPasswordComponent
+    path: "security",
+    loadChildren: () => import("./modules/security/security.module").then(x => x.SecurityModule)
   },
   {
     path:"**",
