@@ -21,6 +21,18 @@ const routes: Routes = [
     loadChildren: () => import("./modules/security/security.module").then(x => x.SecurityModule)
   },
   {
+    path: "building",
+    loadChildren: () => import("./modules/building/building.module").then(x => x.BuildingModule)
+  },
+  {
+    path: "reports",
+    loadChildren: () => import("./modules/reports/reports.module").then(x => x.ReportsModule)
+  },
+  {
+    path: "images",
+    loadChildren: () => import("./modules/images/images.module").then(x => x.ImagesModule)
+  },
+  {
     path:"**",
     component: NotFoundComponent
   }

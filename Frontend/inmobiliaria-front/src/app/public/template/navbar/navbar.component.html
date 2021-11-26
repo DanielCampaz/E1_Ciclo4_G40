@@ -5,10 +5,10 @@
     <a routerLink="home" class="brand-logo col l6 s12">Logo</a>
     <a routerLink="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down">
-      <li><a routerLink="#">Perfil</a></li>
-      <li><a routerLink="#">Subir</a></li>
-      <li><a routerLink="/security/singup">Ingresar</a></li>
-      <li><a routerLink="#">Cerrar Sesion</a></li>
+      <li *ngIf="session"><a routerLink="#">Perfil</a></li>
+      <li *ngIf="session"><a routerLink="#">Subir</a></li>
+      <li *ngIf="!session"><a routerLink="/security/singup">Ingresar</a></li>
+      <li *ngIf="session"><a routerLink="#">Cerrar Sesion</a></li>
     </ul>
   </div>
 </div>
@@ -16,6 +16,8 @@
 </nav>
 
 <ul class="sidenav" id="mobile-demo">
-  <li><a routerLink="/security/singup">Ingresar</a></li>
-  <li><a routerLink="#">Cerrar Sesion</a></li>
+  <li *ngIf="session"><a routerLink="#">Perfil</a></li>
+  <li *ngIf="session"><a routerLink="#">Subir</a></li>
+  <li *ngIf="!session"><a routerLink="/security/singup">Ingresar</a></li>
+  <li *ngIf="session"><a routerLink="#">Cerrar Sesion</a></li>
 </ul>
