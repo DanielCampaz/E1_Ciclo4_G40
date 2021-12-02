@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Attribute, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { inmueble } from '../General/inmueble';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) {
+  }
+  public inmuebleList: Array<inmueble> | undefined;
 
   ngOnInit(): void {
   }
-
 }

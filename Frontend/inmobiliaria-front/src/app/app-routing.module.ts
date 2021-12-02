@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './modules/security/login/login.component';
 import { SignUpComponent } from './modules/security/sign-up/sign-up.component';
 import { HomeComponent } from './public/general/home/home.component';
+import { NotFoundComponent } from './public/errors/not-found/not-found.component';
+import { ResetPasswordComponent } from './modules/security/reset-password/reset-password.component';
 
 const routes: Routes = [
   {
@@ -15,12 +17,24 @@ const routes: Routes = [
     redirectTo: "/home"
   },
   {
-    path: "singup",
-    component: SignUpComponent
+    path: "security",
+    loadChildren: () => import("./modules/security/security.module").then(x => x.SecurityModule)
   },
   {
-    path: "login",
-    component: LoginComponent
+    path: "building",
+    loadChildren: () => import("./modules/building/building.module").then(x => x.BuildingModule)
+  },
+  {
+    path: "reports",
+    loadChildren: () => import("./modules/reports/reports.module").then(x => x.ReportsModule)
+  },
+  {
+    path: "images",
+    loadChildren: () => import("./modules/images/images.module").then(x => x.ImagesModule)
+  },
+  {
+    path:"**",
+    component: NotFoundComponent
   }
 ];
 

@@ -10,6 +10,7 @@ import { CreateUserComponent } from './user/create-user/create-user.component';
 import { DeleteUserComponent } from './user/delete-user/delete-user.component';
 import { ChangeUserComponent } from './user/change-user/change-user.component';
 import { GetUserComponent } from './user/get-user/get-user.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -25,7 +26,9 @@ import { GetUserComponent } from './user/get-user/get-user.component';
   ],
   imports: [
     CommonModule,
-    SecurityRoutingModule
+    SecurityRoutingModule, 
+    FormsModule, 
+    ReactiveFormsModule
   ]
 })
 export class SecurityModule { }
