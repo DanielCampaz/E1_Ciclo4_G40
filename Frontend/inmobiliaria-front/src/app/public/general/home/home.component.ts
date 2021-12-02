@@ -11,7 +11,8 @@ export class HomeComponent implements OnInit {
 
   constructor(private route: ActivatedRoute) {
   }
-  public inmuebleList: Array<inmueble> | undefined;
+  
+  public inmuebleList: Array<number> = [1,2,3,4,5];
 
   ngOnInit(): void {
   }
