@@ -8,6 +8,7 @@ import { FooterComponent } from './public/template/footer/footer.component';
 import { NavbarComponent } from './public/template/navbar/navbar.component';
 import { NotFoundComponent } from './public/errors/not-found/not-found.component';
 import { HomeComponent } from './public/general/home/home.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HomeComponent } from './public/general/home/home.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
