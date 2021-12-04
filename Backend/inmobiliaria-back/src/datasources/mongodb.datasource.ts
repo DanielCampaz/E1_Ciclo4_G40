@@ -1,11 +1,12 @@
 import {inject, lifeCycleObserver, LifeCycleObserver} from '@loopback/core';
 import {juggler} from '@loopback/repository';
+const appConfig = require('../../appConfig.js');
 //import { General } from '../recurso/General';
 
 const config = {
   name: 'mongodb',
   connector: 'mongodb',
-  url: 'mongodb+srv://proyectoC4Back:proyectoC4Back@proyectoequipo1.lwgjr.mongodb.net/inmobiliaria?retryWrites=true&w=majority',
+  url: appConfig.DATA_CONFIG,
   host: '',
   port: 0,
   user: '',

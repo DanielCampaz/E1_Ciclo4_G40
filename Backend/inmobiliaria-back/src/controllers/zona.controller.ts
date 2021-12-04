@@ -19,7 +19,9 @@ import {
 } from '@loopback/rest';
 import {Zona} from '../models';
 import {ZonaRepository} from '../repositories';
+import {authenticate} from '@loopback/authentication';
 
+@authenticate('jwt')
 export class ZonaController {
   constructor(
     @repository(ZonaRepository)

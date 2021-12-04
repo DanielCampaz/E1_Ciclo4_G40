@@ -1,4 +1,4 @@
-import { service } from '@loopback/core';
+import { service, inject } from '@loopback/core';
 import {
   Count,
   CountSchema,
@@ -24,7 +24,7 @@ import {UsuarioRepository} from '../repositories';
 import { AdminContrasenasService } from '../services';
 
 export class UsuarioController {
-  constructor(
+  constructor(    
     @repository(UsuarioRepository)
     public usuarioRepository : UsuarioRepository,
     @service(AdminContrasenasService)
@@ -55,8 +55,8 @@ export class UsuarioController {
     usuario.clave = contrasenaCifrada;
     let newUser=  await this.usuarioRepository.create(usuario);
     if (newUser){
-      this.servicioContrasena.notificarEmail(newUser.nombre,newUser.correo,contrasena, "CR");   
-      this.servicioContrasena.notificacionSms(newUser.nombre, newUser.correo, contrasena, newUser.telefono);
+     await  this.servicioContrasena.notificarEmail(newUser.nombre,newUser.correo,contrasena, "CR");   
+     await this.servicioContrasena.notificacionSms(newUser.nombre, newUser.correo, contrasena, newUser.telefono);
     }
     return newUser;
   }
@@ -69,7 +69,8 @@ export class UsuarioController {
   async count(
     @param.where(Usuario) where?: Where<Usuario>,
   ): Promise<Count> {
-
+    await this.servicioContrasena.notificacionSms("Rocio", "rochio1991@gmail.com", "123456", "3143716283");
+  
     return this.usuarioRepository.count(where);
   }
 
@@ -183,16 +184,18 @@ export class UsuarioController {
     })
     login : Login
   ): Promise<object | null> {
-    let user = await this.usuarioRepository.findOne({
+    let usuario = await this.usuarioRepository.findOne({
       where:{
         correo: login.usuario,
         clave : this.servicioContrasena.cifrarTexto(login.clave)
       }
     });
-    if(user){
+    if(usuario){
       //token
+      let token = await this.servicioContrasena.tokenGenerator(usuario)
+      return {usuario, token};      
     }
-    return user;
+    return null;
   }
 
   @post('/validar-existe-cuenta')
@@ -263,3 +266,6 @@ export class UsuarioController {
   }
 
 }
+
+
+

@@ -19,7 +19,9 @@ import {
 } from '@loopback/rest';
 import {Inmueble} from '../models';
 import {InmuebleRepository} from '../repositories';
+import {authenticate} from '@loopback/authentication';
 
+@authenticate('jwt')
 export class InmuebleController {
   constructor(
     @repository(InmuebleRepository)

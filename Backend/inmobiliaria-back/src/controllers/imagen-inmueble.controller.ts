@@ -11,7 +11,9 @@ import {
   Inmueble,
 } from '../models';
 import {ImagenRepository} from '../repositories';
+import {authenticate} from '@loopback/authentication';
 
+@authenticate('jwt')
 export class ImagenInmuebleController {
   constructor(
     @repository(ImagenRepository)

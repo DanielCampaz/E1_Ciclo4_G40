@@ -19,7 +19,9 @@ import {
 } from '@loopback/rest';
 import {Imagen} from '../models';
 import {ImagenRepository} from '../repositories';
+import {authenticate} from '@loopback/authentication';
 
+@authenticate('jwt')
 export class ImagenController {
   constructor(
     @repository(ImagenRepository)

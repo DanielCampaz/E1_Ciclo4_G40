@@ -20,7 +20,9 @@ import {
   Imagen,
 } from '../models';
 import {InmuebleRepository} from '../repositories';
+import {authenticate} from '@loopback/authentication';
 
+@authenticate('jwt')
 export class InmuebleImagenController {
   constructor(
     @repository(InmuebleRepository) protected inmuebleRepository: InmuebleRepository,

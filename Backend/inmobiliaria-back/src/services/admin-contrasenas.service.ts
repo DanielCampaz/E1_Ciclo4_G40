@@ -1,8 +1,19 @@
-import {injectable, /* inject, */ BindingScope} from '@loopback/core';
+import {injectable, /* inject, */ BindingScope, inject} from '@loopback/core';
 import { repository } from '@loopback/repository';
 import { Usuario } from '../models';
 import { CambioContrasena } from '../models/cambio-contrasena.model';
 import { UsuarioRepository } from '../repositories';
+import { TokenService} from '@loopback/authentication';
+import {
+  TokenServiceBindings,
+  UserServiceBindings,
+  MyUserService
+} from '@loopback/authentication-jwt';
+import { User } from '../../node_modules/@loopback/authentication-jwt/dist/models';
+import {SecurityBindings, UserProfile} from '@loopback/security';
+
+
+const config = require('../../appConfig.js');
 const generator = require('generate-password');
 var CryptoJS = require("crypto-js");
 const nodemailer = require("nodemailer");
@@ -12,27 +23,30 @@ let transporter = nodemailer.createTransport({
   port: 587,
   secure: false, // true for 465, false for other ports flase for 587 
   auth: {
-    user: 'misionticequipo1@gmail.com', // generated ethereal user
-    pass: 'Proyectoeq1.', // generated ethereal password
+    user: config.NODE_MAIL, // generated ethereal user
+    pass: config.NODE_PASS, // generated ethereal password
 
   },
 });
 
-const accountSid = 'AC5bdd2b10dbf693891595dab689092cb0';
-const authToken = 'eb82203476cddd9ee9164ea3e39a84f6';
+const accountSid = config.TWILIO_ACCOUNT;
+const authToken = config.TWILIO_TOKEN;
+const phoneNumber = config.TWILIO_FROM;
 
 const client = require('twilio')(accountSid, authToken);
 
 @injectable({scope: BindingScope.TRANSIENT})
 export class AdminContrasenasService {
-  constructor(
+  constructor(    
+    @inject(TokenServiceBindings.TOKEN_SERVICE)
+    public jwtService: TokenService,
     @repository(UsuarioRepository)
-    public usuarioRepository : UsuarioRepository
+    public usuarioRepository : UsuarioRepository,
+    @inject(UserServiceBindings.USER_SERVICE)
+    public userService: MyUserService,
+    @inject(SecurityBindings.USER, {optional: true})
+    public userprofile: UserProfile,
   ) {}
-
-  /*
-   * Add service methods here
-   */
 
   crearContrasena(){
   let  contrasena  =  generator.generate ( { 
@@ -101,7 +115,7 @@ export class AdminContrasenasService {
     }
 
     var constructMail = {
-      from: 'misionticequipo1@gmail.com',
+      from: config.NODE_MAIL,
       to: correo,
       subject: asunto,
       html: sms,
@@ -110,10 +124,8 @@ export class AdminContrasenasService {
     transporter.sendMail(constructMail, function(error:any, info:any){
         if (error){
             console.log(error);
-            //res.send(500, err.message);
         } else {
             console.log("Email send");
-            //res.status(200).jsonp(req.body);
             res= true;
         }
     });
@@ -124,12 +136,30 @@ export class AdminContrasenasService {
 
   client.messages.create({
     body: 'Hola '+nombre+', bienvenid@ a InmobiliariaEq1.com, estas son tus credenciales de acceso Usuario: '+correo+' Clave: '+clave,
-    from: '+17014017414',
+    from: phoneNumber,
     to: '+57'+destino
   }).then((message: any) => console.log(message));
-
+  console.log(accountSid);
+  console.log(authToken);
+  console.log(config.TWILIO_FROM);
+  console.log(destino);
   return true;
   }
 
+  async tokenGenerator(usuario: Usuario) : Promise<string | null>{
+    try{
+      let usuarioLoop = new User();
+        usuarioLoop.id = usuario._id || "1";
+        usuarioLoop.email = usuario.correo;
+        usuarioLoop.username = usuario.nombre;
+      const perfil = this.userService.convertToUserProfile(usuarioLoop);
+      const token = await this.jwtService.generateToken(perfil);
+      return token;
+    }
+    catch(error){
+      console.log(error);
+      return null;
+    }  
+  }
 
 }

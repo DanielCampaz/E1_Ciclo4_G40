@@ -19,7 +19,9 @@ import {
   } from '@loopback/rest';
   import {Ubicacion } from '../models';
   import {UbicacionRepository} from '../repositories';
-  
+  import {authenticate} from '@loopback/authentication';
+
+  @authenticate('jwt')
   export class UbicacionController {
     constructor(
       @repository(UbicacionRepository)
