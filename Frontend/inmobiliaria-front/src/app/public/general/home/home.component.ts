@@ -9,11 +9,12 @@ import { inmueble } from '../General/inmueble';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute) { 
   }
-  
-  public inmuebleList: Array<number> = [1,2,3,4,5];
 
+  public inmuebleList: Array<number> | undefined;
+  
   ngOnInit(): void {
+    this.inmuebleList = [1,2,3,4,5];
   }
 }
