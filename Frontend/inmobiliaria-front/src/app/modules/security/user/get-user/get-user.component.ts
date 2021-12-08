@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UserModel } from 'src/app/modelos/user.model';
+import { UserService } from 'src/app/servicios/parametros/user.service';
+
 
 @Component({
   selector: 'app-get-user',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GetUserComponent implements OnInit {
 
-  constructor() { }
+  recordList: UserModel[] =[];
+
+  constructor(
+    private servicios: UserService
+  ) { }
 
   ngOnInit(): void {
+    this.GetRecordList();
   }
 
+  GetRecordList(){
+    this.servicios.GetRecordList().subscribe({
+      next: (data: UserModel[]) =>{
+        this.recordList = data;
+      }
+
+    })
+  }
 }
+
