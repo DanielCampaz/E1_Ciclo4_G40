@@ -1,35 +1,29 @@
-import { service, inject } from '@loopback/core';
+import {service} from '@loopback/core';
 import {
   Count,
   CountSchema,
   Filter,
   FilterExcludingWhere,
   repository,
-  Where,
+  Where
 } from '@loopback/repository';
 import {
-  post,
-  param,
-  get,
-  getModelSchemaRef,
-  patch,
-  put,
-  del,
-  requestBody,
-  response,
+  del, get,
+  getModelSchemaRef, param, patch, post, put, requestBody,
+  response
 } from '@loopback/rest';
 import {Login, Usuario} from '../models';
-import { CambioContrasena } from '../models/cambio-contrasena.model';
+import {CambioContrasena} from '../models/cambio-contrasena.model';
 import {UsuarioRepository} from '../repositories';
-import { AdminContrasenasService } from '../services';
+import {AdminContrasenasService} from '../services';
 
 export class UsuarioController {
-  constructor(    
+  constructor(
     @repository(UsuarioRepository)
-    public usuarioRepository : UsuarioRepository,
+    public usuarioRepository: UsuarioRepository,
     @service(AdminContrasenasService)
-    public servicioContrasena : AdminContrasenasService
-  ) {}
+    public servicioContrasena: AdminContrasenasService
+  ) { }
 
   @post('/usuarios')
   @response(200, {
@@ -49,14 +43,14 @@ export class UsuarioController {
     })
     usuario: Omit<Usuario, '_id'>,
   ): Promise<Usuario> {
-    let contrasena= this.servicioContrasena.crearContrasena();
+    let contrasena = this.servicioContrasena.crearContrasena();
     let contrasenaCifrada = this.servicioContrasena.cifrarTexto(contrasena);
 
     usuario.clave = contrasenaCifrada;
-    let newUser=  await this.usuarioRepository.create(usuario);
-    if (newUser){
-     await  this.servicioContrasena.notificarEmail(newUser.nombre,newUser.correo,contrasena, "CR");   
-     await this.servicioContrasena.notificacionSms(newUser.nombre, newUser.correo, contrasena, newUser.telefono);
+    let newUser = await this.usuarioRepository.create(usuario);
+    if (newUser) {
+      await this.servicioContrasena.notificarEmail(newUser.nombre, newUser.correo, contrasena, "CR");
+      await this.servicioContrasena.notificacionSms(newUser.nombre, newUser.correo, contrasena, newUser.telefono);
     }
     return newUser;
   }
@@ -70,7 +64,7 @@ export class UsuarioController {
     @param.where(Usuario) where?: Where<Usuario>,
   ): Promise<Count> {
     await this.servicioContrasena.notificacionSms("Rocio", "rochio1991@gmail.com", "123456", "3143716283");
-  
+
     return this.usuarioRepository.count(where);
   }
 
@@ -124,7 +118,7 @@ export class UsuarioController {
     @param.path.string('id') id: string,
     @param.filter(Usuario, {exclude: 'where'}) filter?: FilterExcludingWhere<Usuario>
   ): Promise<Usuario> {
-    
+
     return this.usuarioRepository.findById(id, filter);
   }
 
@@ -182,18 +176,18 @@ export class UsuarioController {
         },
       },
     })
-    login : Login
+    login: Login
   ): Promise<object | null> {
     let usuario = await this.usuarioRepository.findOne({
-      where:{
+      where: {
         correo: login.usuario,
-        clave : this.servicioContrasena.cifrarTexto(login.clave)
+        clave: this.servicioContrasena.cifrarTexto(login.clave)
       }
     });
-    if(usuario){
+    if (usuario) {
       //token
       let token = await this.servicioContrasena.tokenGenerator(usuario)
-      return {usuario, token};      
+      return {usuario, token};
     }
     return null;
   }
@@ -213,14 +207,14 @@ export class UsuarioController {
         },
       },
     })
-    login : Login
+    login: Login
   ): Promise<boolean> {
     let user = await this.usuarioRepository.findOne({
-      where:{
+      where: {
         correo: login.usuario
       }
     });
-    if(user){
+    if (user) {
       return false;
     }
     return true;
@@ -241,7 +235,7 @@ export class UsuarioController {
         },
       },
     })
-    loginContrasena : CambioContrasena
+    loginContrasena: CambioContrasena
   ): Promise<boolean> {
     let response = await this.servicioContrasena.cambiarContrasena(loginContrasena);
     return response;
@@ -259,7 +253,7 @@ export class UsuarioController {
         },
       },
     })
-    correo : string
+    correo: string
   ): Promise<Usuario | null> {
     let user = await this.servicioContrasena.recuperarContrasena(correo);
     return user;
