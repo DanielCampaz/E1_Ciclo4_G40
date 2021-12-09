@@ -1,1 +1,24 @@
-<p>inmueble works!</p>
+<div class="container">
+    <div class="row">
+        <div class="img">
+            <div class="titulo">
+                <h2 class="tituloIs">{{idList.nombre}}</h2>
+            </div>
+            <div class="imagen">
+                <img [src]="image" [alt]="imagefound" width="500" height="250">
+            </div>
+            <div class="siguiente">
+                <button class="siguiente-boton" (click)="siguiente()">Siguiente</button>
+            </div>
+            <div class="atras">
+                <button class="atras-boton" (click)="atras()">Atras</button>
+            </div>
+        </div>
+        <div class="contact">
+            <h5 class="contacto-titulo">Contactate con {{nombrepublicado}}</h5>
+        </div>
+        <div class="correo">
+            <h6><a href="https://mail.google.com/mail/u/1/#inbox?compose=new" target="_blank">Correo Del Publicador</a></h6>
+        </div>
+    </div>
+</div>

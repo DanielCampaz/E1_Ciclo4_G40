@@ -5,11 +5,16 @@ import { SignUpComponent } from './modules/security/sign-up/sign-up.component';
 import { HomeComponent } from './public/general/home/home.component';
 import { NotFoundComponent } from './public/errors/not-found/not-found.component';
 import { ResetPasswordComponent } from './modules/security/reset-password/reset-password.component';
+import { InmuebleComponent } from './inmueble/inmueble/inmueble.component';
 
 const routes: Routes = [
   {
     path: "home",
     component: HomeComponent
+  },
+  {
+    path: "detalle/:id",
+    component: InmuebleComponent
   },
   {
     path: "",

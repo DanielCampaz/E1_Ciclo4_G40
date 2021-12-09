@@ -10,3 +10,7 @@
     margin-bottom: 15px;
     background-color: aliceblue;
 }
+
+.cardIn{
+    display: grid;
+}

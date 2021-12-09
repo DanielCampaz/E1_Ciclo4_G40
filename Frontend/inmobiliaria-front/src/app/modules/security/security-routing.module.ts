@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { GetUserComponent } from './user/get-user/get-user.component';
+import { PerfilComponent } from './user/perfil/perfil/perfil.component';
 
 const routes: Routes = [
   {
@@ -16,6 +18,14 @@ const routes: Routes = [
   {
     path: "reset-password",
     component: ResetPasswordComponent
+  },
+  {
+    path:"user",
+    component: GetUserComponent
+  },
+  {
+    path:"perfil/:id",
+    component: PerfilComponent
   }
 ];
 

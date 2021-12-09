@@ -1,13 +1,15 @@
-<div class="card small">
-    <div class="card-image">
-        <img [src]="image">
-        <span class="card-title">{{dataEntrante}}</span>
-    </div>
-    <div class="card-content">
-        <p>I am a very simple card. I am good at containing small bits of information.
-            I am convenient because I require little markup to use effectively.</p>
-    </div>
-    <div class="card-action">
-        <a class="waves-effect waves-light btn">Click Aquí</a>
+<div class="contenedor">
+    <div class="card small">
+        <div class="card-image">
+            <img [src]="image">
+            <span class="card-title">{{titulo}}</span>
+        </div>
+        <div class="card-content">
+            <p>I am a very simple card. I am good at containing small bits of information.
+                I am convenient because I require little markup to use effectively.</p>
+        </div>
+        <div class="card-action">
+            <a class="waves-effect waves-light btn" [routerLink]="link">Click Aquí</a>
+        </div>
     </div>
 </div>

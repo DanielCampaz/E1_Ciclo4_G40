@@ -7,14 +7,18 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./card-inmueble.component.css']
 })
 export class CardInmuebleComponent implements OnInit {
+  
   @Input() dataEntrante: any;
   public image: string | undefined;
-  public ejem: string = "hola"
+  public link: string | undefined;
+  public titulo: string | undefined;
+
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.image = "https://cdn.pixabay.com/photo/2016/11/18/17/46/house-1836070_960_720.jpg"
-    console.log(this.dataEntrante)
+    this.image = this.dataEntrante.url;
+    this.titulo = this.dataEntrante.nombre;
+    this.link = `/detalle/${this.dataEntrante.id}`
   }
 
 }
