@@ -21,7 +21,7 @@ import {Inmueble} from '../models';
 import {InmuebleRepository} from '../repositories';
 import {authenticate} from '@loopback/authentication';
 
-@authenticate('jwt')
+//@authenticate('jwt')
 export class InmuebleController {
   constructor(
     @repository(InmuebleRepository)
@@ -148,5 +148,43 @@ export class InmuebleController {
   })
   async deleteById(@param.path.string('id') id: string): Promise<void> {
     await this.inmuebleRepository.deleteById(id);
+  }
+
+  //Filters
+  @get('/filtrosInmuebles/{by}/{desc}')
+  @response(200, {
+    description: 'Inmueble model instance',
+    content: {
+      'application/json': {
+        schema: getModelSchemaRef(Inmueble, {includeRelations: true}),
+      },
+    },
+  })
+  async findFilter(
+    @param.path.number('by') by: number,
+    @param.path.string('desc') desc: string
+  ): Promise<Inmueble[] | false> {
+    let opc = Number(desc);
+    switch (by) {
+      case 1:
+        return this.inmuebleRepository.find({where: {tipo: {like: desc}}});
+        break;
+
+      case 2:
+        return this.inmuebleRepository.find({where: {n_habitaciones: desc}});
+        break;
+
+      case 3:
+        return this.inmuebleRepository.find({where: {n_banos: desc}});
+        break;
+
+      case 4:        
+        return this.inmuebleRepository.find({where: {precio: {gt : opc}}});
+        break;
+      case 5:
+        return this.inmuebleRepository.find({where: {precio: {lt : opc}}});
+        break;
+    }
+    return false;    
   }
 }
