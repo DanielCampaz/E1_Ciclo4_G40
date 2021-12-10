@@ -1,19 +1,36 @@
-<div class="container">
-    <div class="row">
-        <div *ngFor="let inmueble of inmuebleList">
-            <div class="card-columns">
-                <div class="col s12 m7">
-                    <div class="card">
-                        <div class="card-image">
-                            <img src="https://harbourhomes.com/revslider/media/12d6b-cypress-copper-rim_0018_DSC_3498.jpg">
-                            <span class="card-title">Title</span>
-                        </div>
-                        <div class="card-content">
-                            <p>I am a very simple card. I am good at containing small bits of information.
-                                I am convenient because I require little markup to use effectively.</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="#">This is a link</a>
+<div class="backg">
+    <div class="container">
+        <div class="row">
+            <div class="buscador">
+                <form action="">
+                    <div class="col l6 s12">
+                        <input type="text">
+                    </div>
+                    <div class="col l6 s12">
+                        <input type="text">
+                    </div>
+                    <div class="col l6 s12">
+                        <input type="text">
+                    </div>
+                    <div class="col l6 s12">
+                        <a class="waves-effect waves-light btn"><i
+                                class="material-icons left">youtube_searched_for</i>Filtrar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="contenedor">
+    <div *ngIf="inmuebleList">
+        <div class="grid">
+            <div class="container">
+                <div class="row">
+                    <div *ngFor="let inmueble of inmuebleList">
+                        <div class="card-columns">
+                            <div class="col s12 m7">
+                                <app-card-inmueble [dataEntrante]="inmueble" class="cardIn"></app-card-inmueble>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -21,3 +38,5 @@
         </div>
     </div>
 </div>
+
+<button (click)="solicitar()">Hola</button>

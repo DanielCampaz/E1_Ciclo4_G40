@@ -9,6 +9,8 @@ import { NavbarComponent } from './public/template/navbar/navbar.component';
 import { NotFoundComponent } from './public/errors/not-found/not-found.component';
 import { HomeComponent } from './public/general/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CardInmuebleComponent } from './card/card-inmueble/card-inmueble.component';
+import { InmuebleComponent } from './inmueble/inmueble/inmueble.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     NavbarComponent,
     NotFoundComponent,
-    HomeComponent
+    HomeComponent,
+    CardInmuebleComponent,
+    InmuebleComponent
   ],
   imports: [
     BrowserModule,

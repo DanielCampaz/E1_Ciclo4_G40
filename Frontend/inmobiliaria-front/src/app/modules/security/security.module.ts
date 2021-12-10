@@ -11,6 +11,7 @@ import { DeleteUserComponent } from './user/delete-user/delete-user.component';
 import { ChangeUserComponent } from './user/change-user/change-user.component';
 import { GetUserComponent } from './user/get-user/get-user.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PerfilComponent } from './user/perfil/perfil/perfil.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CreateUserComponent,
     DeleteUserComponent,
     ChangeUserComponent,
-    GetUserComponent
+    GetUserComponent,
+    PerfilComponent
   ],
   imports: [
     CommonModule,
