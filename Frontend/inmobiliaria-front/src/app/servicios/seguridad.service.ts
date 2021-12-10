@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ModeloIdentificar } from '../modelos/identificar.modelo';
+import { UserModel } from '../modelos/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +38,10 @@ export class SeguridadService {
 
       })
     })
+  }
+
+  Solicitarusuario():Observable<UserModel>{
+    return this.http.get("localhost:3000/usuarios")
   }
 
 }

@@ -1,5 +1,6 @@
 import { Attribute, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { SeguridadService } from 'src/app/servicios/seguridad.service';
 import { inmueble } from '../General/inmueble';
 
 @Component({
@@ -9,7 +10,10 @@ import { inmueble } from '../General/inmueble';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) { 
+  constructor(
+    private route: ActivatedRoute,
+    private service:SeguridadService
+    ) { 
   }
 
   public inmuebleList: Array<any> | undefined;
@@ -36,5 +40,16 @@ export class HomeComponent implements OnInit {
       url: "https://cdn.pixabay.com/photo/2016/08/11/23/48/mountains-1587287_960_720.jpg",
       id: "5"
     }];
+  }
+
+  solicitar(): void{
+    this.service.Solicitarusuario().subscribe({
+      next: (data:any) =>{
+        console.log(data)
+      },
+      error: (error:any) =>{
+        console.log(error)
+      }
+    })
   }
 }
