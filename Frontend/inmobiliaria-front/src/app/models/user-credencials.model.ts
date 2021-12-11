@@ -1,4 +1,4 @@
 export class UserCredentialsModel{
-    username?: string; //Que sea opcional 
-    password?: string;
+    usuario?: string; //Que sea opcional 
+    clave?: string;
 }

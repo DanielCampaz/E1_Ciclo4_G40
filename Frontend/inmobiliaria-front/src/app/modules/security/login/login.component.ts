@@ -38,8 +38,8 @@ export class LoginComponent implements OnInit {
       //OpenGeneralMessageModal(GeneralData.INVALID_FORM_MESSAGE)
     }else{
     let modelo = new UserCredentialsModel();
-    modelo.username =this.GetForm.username.value;
-    modelo.password =MD5(this.GetForm.password.value).toString();
+    modelo.usuario =this.GetForm.username.value;
+    modelo.clave =MD5(this.GetForm.password.value).toString();
     /**this.servicioSeguridad.Identificar(modelo).subscribe((datos:any) =>{
       //ok
       alert("Si Señora Funciona")

@@ -1,4 +1,6 @@
+import { UserModel } from "./user.model"
+
 export class ModeloIdentificar{
-    correo?: string
-    clave?: string
+    usuario?: UserModel
+    token?: string
 }

@@ -38,8 +38,8 @@ export class SignUpComponent implements OnInit {
     } else {
       OpenGeneralMessageModal(GeneralData.VALID_FORM_MESSAGE)
       let modelo = new UserCredentialsModel();
-      modelo.username = this.GetForm.username.value;
-      modelo.password = MD5(this.GetForm.password.value).toString();
+      modelo.usuario = this.GetForm.username.value;
+      modelo.clave = this.GetForm.password.value
       this.servicioSeguridad.Identificar(modelo).subscribe((datos: any) => {
         //ok
         console.log(datos)

@@ -1,5 +1,6 @@
 import { Attribute, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { UserModel } from 'src/app/modelos/user.model';
 import { SeguridadService } from 'src/app/servicios/seguridad.service';
 import { inmueble } from '../General/inmueble';
 
@@ -44,7 +45,7 @@ export class HomeComponent implements OnInit {
 
   solicitar(): void{
     this.service.Solicitarusuario().subscribe({
-      next: (data:any) =>{
+      next: (data:UserModel) =>{
         console.log(data)
       },
       error: (error:any) =>{

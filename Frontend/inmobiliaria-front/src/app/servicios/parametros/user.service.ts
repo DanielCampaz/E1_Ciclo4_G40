@@ -14,11 +14,11 @@ export class UserService {
   ) { }
 
   GetRecordList(): Observable<UserModel[]>{
-    return this.http.get<UserModel[]>('${this.url}/usuarios');
+    return this.http.get<UserModel[]>(`${this.url}/usuarios`);
   }
 
   SaveRecord(data: UserModel): Observable<UserModel[]>{
-    return this.http.post<UserModel[]>('${this.url}/usuarios', {
+    return this.http.post<UserModel[]>(`${this.url}/usuarios`, {
       nombre: data.nombre
     })
     //{
