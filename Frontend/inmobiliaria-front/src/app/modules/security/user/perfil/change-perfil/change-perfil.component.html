@@ -1,6 +1,5 @@
 <div class="row" >
   <form [formGroup]="form" class="col s12">
-    <!--
     <input type="hidden" formControlName="id"/>
     <div class="row">
       <div class="input-field col s12">
@@ -27,11 +26,13 @@
         <input formControlName="precio" id="precio" type="text">
         <label for="precio">Precio</label>
       </div>
+    </div>
       <div class="row">
         <div class="input-field col s12">
           <input formControlName="t_pub" id="t_pub" type="text">
           <label for="t_pub">t_pub</label>
         </div>
+      </div>
         <div class="row">
           <div class="input-field col s12">
             <input formControlName="id_zona" id="id_zona" type="text">
@@ -44,9 +45,9 @@
           </button>
         </div>
         <div class="input-field col s6">
-          <a routerLink="/modules/security/user/perfil/list-perfil" class="btn btn-warning red">
+          <a routerLink="/security/list-perfil" class="btn btn-warning red">
             Cancelar
           </a>
-        </div>-->
+        </div>
   </form>
 </div>

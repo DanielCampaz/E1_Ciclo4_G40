@@ -19,11 +19,34 @@ export class UserService {
 
   SaveRecord(data: UserModel): Observable<UserModel[]>{
     return this.http.post<UserModel[]>(`${this.url}/usuarios`, {
-      nombre: data.nombre
+      nombre: data.nombre,
+      correo: data.correo,
+      telefono: data.telefono,
+      clave: data.clave,
+      direccion: data.direccion,
+      ciudad: data.ciudad,
+      pais: data.pais
     })
-    //{
-     // headers: new HttpHeaders({
-       // Authorization: 'Bearer ${this.token}'
-  //})
+    
     };
+    SearchRecord(id: string): Observable<UserModel>{
+      return this.http.get<UserModel>(`${this.url}/usuarios/${id}`)
+    }
+    EditRecord(data: UserModel): Observable<UserModel>{
+      return this.http.put<UserModel>(`${this.url}/usuarios/${data._id}`,{
+        _id: data._id,
+        nombre: data.nombre,
+        correo: data.correo,
+        telefono: data.telefono,
+        clave: data.clave,
+        direccion: data.direccion,
+        ciudad: data.ciudad,
+        pais: data.pais
+    });
+    }
+    RemoveRecord(_id: string): Observable<any>{
+      return this.http.delete(
+        `${this.url}/usuarios/${_id}`,{
+    });
+    }
   }

@@ -29,9 +29,10 @@
             Editar
         </th>
         <th>
-            Eleminar
+            Eliminar
         </th>
     </thead>
+   
     <tbody>
         <tr> 
             <td>
@@ -67,29 +68,33 @@
             </td>
         </tr>
     </tbody>
+    <tbody>
+        <tr *ngFor="let r of recordList">
+        <td>
+            {{r._id}} <!--LEER: Dani aqui me saca un error por colocarle lo de imagen, mo se si es que lo tengo que definir en el modelo.. por eso deje el id, pero ahora lo cambiamos entonces -->
+        </td>
+        <td>
+            {{r.descripcion}}
+        </td>
+        <td>
+            {{r.tipo}}
+        </td>
+        <td>
+            {{r.n_habitaciones}}
+        </td>
+        <td>
+            {{r.n_banos}}
+        </td>
+        <td>
+            {{r.precio}}
+        </td>
+        <td>
+            {{r.t_pub}}
+        </td>
+        <td>
+            {{r.id_zona}}
+        </td>
+    </tr>
+    </tbody>
 </table>
-<!--
-<td>
-    {{r.image.2}}
-</td>
-<td>
-    {{r.descripcion}}
-</td>
-<td>
-    {{r.tipo}}
-</td>
-<td>
-    {{r.n_habitaciones}}
-</td>
-<td>
-    {{r.n_banos}}
-</td>
-<td>
-    {{r.precio}}
-</td>
-<td>
-    {{r.t_pub}}
-</td>
-<td>
-    {{r.id_zona}}
-</td>-->
+

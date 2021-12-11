@@ -1,1 +1,28 @@
-<p>delete-user works!</p>
+<div class="container">
+    <div class="row">
+      <input type="hidden" formControlName="id"/>
+      <div class="row">
+        <div class="input-field col s12">
+          <label>Esta seguro de eliminar por completo el registro con la siguiente información:</label>
+          <br>
+          <ul>
+            <li>
+              <strong>Id: {{_id}}</strong>
+            </li>
+            <li>
+              <strong>Nombre: {{nombre}}</strong>
+            </li>
+          </ul>
+        </div>
+        <div class="input-field col s6">
+          <button (click)="RemoveRecord()" class="btn btn-success">
+            Confirmar
+          </button>
+        </div>
+        <div class="input-field col s6">
+          <a routerLink="/security/list-perfil" class="btn btn-warning red">
+            Cancelar
+          </a>
+        </div>
+      </div>
+    </div>

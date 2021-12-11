@@ -1,1 +1,53 @@
-<p>change-user works!</p>
+<div class="row" >
+  <form [formGroup]="form" class="col s12">
+    <input type="hidden" formControlName="id"/>
+    <div class="row">
+      <div class="input-field col s12">
+        <input formControlName="nombre" id="nombre" type="text">
+        <label for="nombre" class="active">Nombre</label>
+      </div>
+      <div class="input-field col s12">
+        <input formControlName="correo" id="correo" type="text">
+        <label for="correo">Correo</label>
+      </div>
+      <div class="input-field col s6">
+        <input formControlName="telefono" id="telefono" type="text">
+        <label for="telefono">Telefono</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input formControlName="clave" id="clave" type="password">
+        <label for="clave">Clave</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input formControlName="direccion" id="direccion" type="text">
+        <label for="direccion">Direccion</label>
+      </div>
+    </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input formControlName="ciudad" id="ciudad" type="text">
+          <label for="ciudad">Ciudad</label>
+        </div>
+      </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input formControlName="pais" id="pais" type="text">
+            <label for="pais">Pais</label>
+          </div>
+        </div>
+        <div class="input-field col s6">
+          <button (click)="SaveRecord()" class="btn btn-success">
+            Guardar
+          </button>
+        </div>
+        <div class="input-field col s6">
+          <a routerLink="/security/get-user" class="btn btn-warning red">
+            Cancelar
+          </a>
+        </div>
+  </form>
+</div>
