@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 export class PerfilComponent implements OnInit {
 
   public id:any;
+  public change: any | undefined;
 
   constructor(private route:ActivatedRoute) { }
 
@@ -17,6 +18,14 @@ export class PerfilComponent implements OnInit {
       const {params} = paramMap 
       this.id = params.id 
     })
+  }
+  
+  listar():void{
+    this.change='Listar'
+  }
+
+  infousuario():void{
+    this.change='Listar_info_Usuario'
   }
 
 }

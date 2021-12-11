@@ -17,7 +17,7 @@ export class ChangePerfilComponent implements OnInit {
   form:FormGroup = new FormGroup({});
 
   constructor(
-    private fb:FormBuilder,
+    private fb: FormBuilder,
     private router: Router,
     private servicios: PerfilService,
     private route: ActivatedRoute

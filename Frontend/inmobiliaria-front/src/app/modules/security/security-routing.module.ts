@@ -44,7 +44,7 @@ const routes: Routes = [
     component: ChangePerfilComponent
   },
   {
-    path:"delete-perfil/:id ",
+    path:"delete-perfil/:id",
     component: DeletePerfilComponent
   }
 ];

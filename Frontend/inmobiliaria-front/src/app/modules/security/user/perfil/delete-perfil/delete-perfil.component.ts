@@ -13,8 +13,9 @@ declare const OpenGeneralMessageModal: any;
   styleUrls: ['./delete-perfil.component.css']
 })
 export class DeletePerfilComponent implements OnInit {
-_id: string= "0";
-descripcion: string ="";
+  _id: string = "0";
+  public id: any
+  descripcion: string = "";
 
   constructor(
     private router: Router,
@@ -23,27 +24,32 @@ descripcion: string ="";
   ) { }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe((paramMap: any) => {
+      const { params } = paramMap
+      this.id = params.id
+    })
     this.SearchRecord();
   }
 
-  SearchRecord(){
+  SearchRecord() {
     let id = this.route.snapshot.params["_id"];
-  this.servicios.SearchRecord(id).subscribe({
-    next: (data:Perfil_InmobilModel) => { 
-      if(data._id && data.descripcion){
-        this._id =data._id;
-        this.descripcion =data.descripcion;
+    console.log(id)
+    this.servicios.SearchRecord(id).subscribe({
+      next: (data: Perfil_InmobilModel) => {
+        if (data._id && data.descripcion) {
+          this._id = data._id;
+          this.descripcion = data.descripcion;
+        }
       }
-    }
-  })
+    })
   }
-  RemoveRecord(){
+  RemoveRecord() {
     this.servicios.RemoveRecord(this._id).subscribe({
-      next: (data: Perfil_InmobilModel) =>{
-      OpenGeneralMessageModal(GeneralData.REMOVED_MESSAGE)
-      this.router.navigate(["/security/user/perfil/list-perfil"])
+      next: (data: Perfil_InmobilModel) => {
+        OpenGeneralMessageModal(GeneralData.REMOVED_MESSAGE)
+        this.router.navigate(["/security/user/perfil/list-perfil"])
       },
-      error: (err:any)=>{
+      error: (err: any) => {
         OpenGeneralMessageModal(GeneralData.ERROR_MESSAGE)
       }
     });

@@ -1,19 +1,19 @@
 <nav class="light-blue accent-3">
   <div class="container ">
-  <div class="row">
-  <div class="nav-wrapper ">
-    <a routerLink="home" class="brand-logo col l6 s12">Inmobiliaria E1</a>
-    <a routerLink="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-    <ul class="right hide-on-med-and-down">
-      <li *ngIf="!session"><a routerLink="/security/user/perfil/list-perfil">Perfil</a></li>
-      <li *ngIf="session"><a routerLink="#">Subir</a></li>
-      <li *ngIf="!session"><a routerLink="/security/user/create-user">Usuarios registrados</a></li>
-      <li *ngIf="!session"><a routerLink="/security/singup">Ingresar</a></li>
-      <li *ngIf="session"><a routerLink="#">Cerrar Sesion</a></li>
-    </ul>
+    <div class="row">
+      <div class="nav-wrapper ">
+        <a routerLink="home" class="brand-logo col l6 s12">Inmobiliaria E1</a>
+        <a routerLink="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li *ngIf="!session"><a routerLink="/security/perfil/1">Perfil</a></li>
+          <li *ngIf="session"><a routerLink="#">Subir</a></li>
+          <li *ngIf="!session"><a routerLink="/security/create-user">Usuarios registrados</a></li>
+          <li *ngIf="!session"><a routerLink="/security/singup">Ingresar</a></li>
+          <li *ngIf="session"><a routerLink="#">Cerrar Sesion</a></li>
+        </ul>
+      </div>
+    </div>
   </div>
-</div>
-</div>
 </nav>
 
 <ul class="sidenav" id="mobile-demo">

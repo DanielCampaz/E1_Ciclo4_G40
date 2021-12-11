@@ -10,6 +10,7 @@ import { PerfilService } from 'src/app/servicios/parametros/perfil.service';
 export class ListPerfilComponent implements OnInit {
 
   recordList: Perfil_InmobilModel[] =[];
+  activo: boolean = true
   constructor(
     private servicios: PerfilService
   ) { }
