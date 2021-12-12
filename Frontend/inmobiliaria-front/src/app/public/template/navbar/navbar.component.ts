@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LocalstorageService } from 'src/app/servicios/localstorage/localstorage.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,13 +9,18 @@ import { Component, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
 
   session: boolean = false;
-  link: any;
-  id: any = 1
-
-  constructor() { }
+  token: any | undefined;
+  constructor(
+    private serviciolocal:LocalstorageService
+  ) { }
 
   ngOnInit(): void {
-    this.link = `/security/perfil/${this.id}`
+    this.token = this.serviciolocal.gettoken()
+    if (this.token != null) {
+      this.session = true
+    }else{
+      this.token = false
+    }
   }
 
 }

@@ -17,6 +17,7 @@ import { ListPerfilComponent } from './user/perfil/list-perfil/list-perfil.compo
 import { DeletePerfilComponent } from './user/perfil/delete-perfil/delete-perfil.component';
 import { ChangePerfilComponent } from './user/perfil/change-perfil/change-perfil.component';
 import { ContPerfilComponent } from './user/perfil/cont-perfil/cont-perfil.component';
+import { ActualizarperfilComponent } from './user/perfil/actualizarperfil/actualizarperfil.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { ContPerfilComponent } from './user/perfil/cont-perfil/cont-perfil.compo
     ListPerfilComponent,
     DeletePerfilComponent,
     ChangePerfilComponent,
-    ContPerfilComponent
+    ContPerfilComponent,
+    ActualizarperfilComponent
   ],
   imports: [
     CommonModule,

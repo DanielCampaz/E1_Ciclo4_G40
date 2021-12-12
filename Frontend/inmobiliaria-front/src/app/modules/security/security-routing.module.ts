@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { GetUserComponent } from './user/get-user/get-user.component';
+import { ActualizarperfilComponent } from './user/perfil/actualizarperfil/actualizarperfil.component';
 import { ChangePerfilComponent } from './user/perfil/change-perfil/change-perfil.component';
 import { CreatePerfilComponent } from './user/perfil/create-perfil/create-perfil.component';
 import { DeletePerfilComponent } from './user/perfil/delete-perfil/delete-perfil.component';
@@ -28,7 +29,7 @@ const routes: Routes = [
     component: GetUserComponent
   },
   {
-    path:"perfil/:id",
+    path:"perfil",
     component: PerfilComponent
   },
   {
@@ -40,8 +41,8 @@ const routes: Routes = [
     component: CreatePerfilComponent
   },
   {
-    path:"change-perfil/:id",
-    component: ChangePerfilComponent
+    path:"perfil/actualizar",
+    component: ActualizarperfilComponent
   },
   {
     path:"delete-perfil/:id",

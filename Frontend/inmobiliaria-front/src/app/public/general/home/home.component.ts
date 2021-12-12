@@ -43,14 +43,4 @@ export class HomeComponent implements OnInit {
     }];
   }
 
-  solicitar(): void{
-    this.service.Solicitarusuario().subscribe({
-      next: (data:UserModel) =>{
-        console.log(data)
-      },
-      error: (error:any) =>{
-        console.log(error)
-      }
-    })
-  }
 }

@@ -4,6 +4,8 @@ import { GeneralData } from 'src/app/config/general-data';
 import { UserCredentialsModel } from 'src/app/models/user-credencials.model';
 import { MD5 } from 'crypto-js';
 import { SeguridadService } from 'src/app/servicios/seguridad.service';
+import { LocalstorageService } from 'src/app/servicios/localstorage/localstorage.service';
+import { Router } from '@angular/router';
 
 declare const OpenGeneralMessageModal: any;
 @Component({
@@ -18,7 +20,9 @@ export class SignUpComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private servicioSeguridad: SeguridadService
+    private servicioSeguridad: SeguridadService,
+    private serviciolocal:LocalstorageService,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -32,22 +36,23 @@ export class SignUpComponent implements OnInit {
       password: ["", [Validators.required, Validators.minLength(GeneralData.PASSWORD_MIN_LENGHT)]]
     })
   }
+  
   Signup() {
     if (this.form.invalid) {
       OpenGeneralMessageModal(GeneralData.INVALID_FORM_MESSAGE)
     } else {
       OpenGeneralMessageModal(GeneralData.VALID_FORM_MESSAGE)
       let modelo = new UserCredentialsModel();
-      modelo.usuario = this.GetForm.username.value;
+      modelo.correo = this.GetForm.username.value;
       modelo.clave = this.GetForm.password.value
       this.servicioSeguridad.Identificar(modelo).subscribe((datos: any) => {
         //ok
         console.log(datos)
-        alert("Si Señora Funciona")
+        let saved =this.serviciolocal.savesessiondata(datos)
+        this.router.navigate(["/security/perfil"])
       }, (error: any) => {
         //ok
         console.log(error)
-        alert(error)
       })
 
     }

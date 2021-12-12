@@ -6,5 +6,5 @@ export namespace GeneralData{
     export const SAVED_MESSAGE = "Registro almacenado";
     export const REMOVED_MESSAGE = "Registro eliminado";
     export const ERROR_MESSAGE = "Error";
-    export const  BUSINESS_URL ="http://localhost:3000/";
+    export const  BUSINESS_URL ="http://localhost:3000";
 }

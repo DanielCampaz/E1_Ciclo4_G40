@@ -1,2 +1,37 @@
-<p>Informacion del usuario</p>
-
+<link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+<section class="seccion-perfil-usuario">
+    <div class="perfil-usuario-header">
+        <div class="perfil-usuario-portada">
+            <div class="perfil-usuario-avatar">
+                <img src="https://www.bbva.com/wp-content/uploads/2021/04/casas-ecolo%CC%81gicas_apertura-hogar-sostenibilidad-certificado--1024x629.jpg"
+                    alt="img-avatar">
+                <button type="button" class="boton-avatar">
+                    <i class="far fa-image"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="perfil-usuario-body">
+        <div class="perfil-usuario-bio">
+            <div *ngIf="usuariodata.nombre !== ' '">
+                <h3 class="titulo">{{usuariodata.nombre}}</h3>
+            </div>
+            <div *ngIf="usuariodata.nombre === ' '">
+                <h3 class="titulo">Actualiza tus Datos</h3>
+            </div>
+        </div>
+        <div class="perfil-usuario-footer">
+            <ul class="lista-datos">
+                <li><i class="icono fas fa-calendar-alt"></i> {{usuariodata.correo}}</li>
+                <li><i class="icono fas fa-phone-alt"></i> {{usuariodata.telefono}}</li>
+            </ul>
+            <ul class="lista-datos">
+                <li><i class="icono fas fa-user-check"></i> ********</li>
+                <li><i class="icono fas fa-map-signs"></i> {{usuariodata.direccion}}</li>
+                <li><i class="icono fas fa-share-alt"></i> {{usuariodata.ciudad}} - {{usuariodata.pais}}</li>
+            </ul>
+        </div>
+    </div>
+</section>

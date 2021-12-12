@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { GeneralData } from '../config/general-data';
 import { ModeloIdentificar } from '../modelos/identificar.modelo';
 import { UserModel } from '../modelos/user.model';
+import { UserCredentialsModel } from '../models/user-credencials.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,24 +15,21 @@ export class SeguridadService {
 
   constructor(private http: HttpClient) { }
 
-  Identificar(modelo: any): Observable<ModeloIdentificar> {
-    return this.http.post(`${this.url}/validar-usuario`, modelo, {
+  Identificar(modelo: UserCredentialsModel): Observable<ModeloIdentificar> {
+    let usuario = modelo.correo
+    let clave = modelo.clave
+    return this.http.post(`${this.url}/validar-usuario`, {
+      usuario,
+      clave
+    }, {
       headers: new HttpHeaders({
 
       })
     })
   }
 
-  Crearusuario(): Observable<any> {
-    return this.http.post(`${this.url}/usuarios`, {
-      nombre: "Juan",
-      correo: "juan@gmial.com",
-      telefono: "303121" ,
-      clave: "121321321",
-      direccion: "calle 34",
-      ciudad:"Any" ,
-      pais: "Colombia"
-    },{
+  Crearusuario(modelo: UserCredentialsModel): Observable<ModeloIdentificar> {
+    return this.http.post(`${this.url}/usuarios`, modelo ,{
       headers: new HttpHeaders({
 
       })
@@ -40,6 +38,14 @@ export class SeguridadService {
 
   Solicitarusuario():Observable<UserModel>{
     return this.http.get<UserModel>(`${this.url}/usuarios`)
+  }
+  
+  RecuperarContrasena(correo:string):Observable<UserModel>{
+    return this.http.post(`${this.url}/recuperar-contrasena`,correo,{
+      headers: new HttpHeaders({
+
+      })
+    })
   }
 
 }

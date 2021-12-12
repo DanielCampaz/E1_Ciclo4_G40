@@ -1,0 +1,47 @@
+<br>
+<div class="container">
+    <div class="row">
+        <form class="col s12" [formGroup]="form">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input placeholder="Nombre" formControlName="nombre" id="name" [value]="usuariodata.nombre" type="text" class="active validate" required>
+                    <label for="name">Nombre</label>
+                </div>
+                <div class="input-field col s6">
+                    <input  id="correo" formControlName="correo" [value]="usuariodata.correo" type="text" placeholder="Correo" class="validate" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input placeholder="Telefono" formControlName="telefono" id="telefono" [value]="usuariodata.telefono" type="text" class="active validate" required>
+                    <label for="telefono">Telefono</label>
+                </div>
+                <div class="input-field col s6">
+                    <input  id="clave" formControlName="clave" [value]="usuariodata.clave" type="password" placeholder="Clave" class="validate" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input placeholder="Direccion" formControlName="direccion" [value]="usuariodata.direccion" id="direccion" type="text" class="active validate" required>
+                    <label for="direccion">Direccion</label>
+                </div>
+                <div class="input-field col s6">
+                    <label for="ciudad">Ciudad</label>
+                    <input id="ciudad" type="text" formControlName="ciudad" [value]="usuariodata.ciudad" placeholder="Ciudad" class="validate" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input placeholder="Pais" id="pais" formControlName="pais" [value]="usuariodata.pais" type="text" class="active validate" required>
+                    <label for="pais">Pais</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <a class="waves-effect waves-light btn" (click)="actualizardatos()">Guardar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<br>

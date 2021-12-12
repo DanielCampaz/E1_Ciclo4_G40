@@ -7,6 +7,8 @@
                 <ul class="center hide-on-med-and-down">
                     <li><a (click)="infousuario()">Informacion Usuario</a></li>
                     <li><a (click)="listar()">Listar</a></li>
+                    <li><a routerLink="actualizar">Actualizar Datos</a></li>
+                    <li><a (click)="cerrarsesion()">Cerrar Sesion</a></li>
                 </ul>
             </div>
         </div>
@@ -21,7 +23,7 @@
                 <app-list-perfil></app-list-perfil>
             </div>
             <div *ngIf="change === 'Listar_info_Usuario'">
-                <app-get-user></app-get-user>
+                <app-cont-perfil></app-cont-perfil>
             </div>
         </div>
     </div>
