@@ -11,6 +11,7 @@ import { HomeComponent } from './public/general/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CardInmuebleComponent } from './card/card-inmueble/card-inmueble.component';
 import { InmuebleComponent } from './inmueble/inmueble/inmueble.component';
+import { CrearInmuebleComponent } from './inmueble/crear-inmueble/crear-inmueble.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { InmuebleComponent } from './inmueble/inmueble/inmueble.component';
     NotFoundComponent,
     HomeComponent,
     CardInmuebleComponent,
-    InmuebleComponent
+    InmuebleComponent,
+    CrearInmuebleComponent
   ],
   imports: [
     BrowserModule,

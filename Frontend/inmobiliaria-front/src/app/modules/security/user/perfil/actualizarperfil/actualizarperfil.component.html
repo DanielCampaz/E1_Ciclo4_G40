@@ -4,35 +4,35 @@
         <form class="col s12" [formGroup]="form">
             <div class="row">
                 <div class="input-field col s6">
-                    <input placeholder="Nombre" formControlName="nombre" id="name" [value]="usuariodata.nombre" type="text" class="active validate" required>
+                    <input placeholder="Nombre" formControlName="nombre"  id="name" type="text" class="active validate" required>
                     <label for="name">Nombre</label>
                 </div>
                 <div class="input-field col s6">
-                    <input  id="correo" formControlName="correo" [value]="usuariodata.correo" type="text" placeholder="Correo" class="validate" required>
+                    <input  id="correo" formControlName="correo" type="text" placeholder="Correo" class="validate">
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                    <input placeholder="Telefono" formControlName="telefono" id="telefono" [value]="usuariodata.telefono" type="text" class="active validate" required>
+                    <input placeholder="Telefono" formControlName="telefono" id="telefono" type="text" class="active validate" required>
                     <label for="telefono">Telefono</label>
                 </div>
                 <div class="input-field col s6">
-                    <input  id="clave" formControlName="clave" [value]="usuariodata.clave" type="password" placeholder="Clave" class="validate" required>
+                    <input  id="clave" formControlName="clave" type="password" placeholder="Clave" class="validate">
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                    <input placeholder="Direccion" formControlName="direccion" [value]="usuariodata.direccion" id="direccion" type="text" class="active validate" required>
+                    <input placeholder="Direccion" formControlName="direccion" id="direccion" type="text" class="active validate" required>
                     <label for="direccion">Direccion</label>
                 </div>
                 <div class="input-field col s6">
                     <label for="ciudad">Ciudad</label>
-                    <input id="ciudad" type="text" formControlName="ciudad" [value]="usuariodata.ciudad" placeholder="Ciudad" class="validate" required>
+                    <input id="ciudad" type="text" formControlName="ciudad" placeholder="Ciudad" class="validate" required>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                    <input placeholder="Pais" id="pais" formControlName="pais" [value]="usuariodata.pais" type="text" class="active validate" required>
+                    <input placeholder="Pais" id="pais" formControlName="pais" type="text" class="active validate" required>
                     <label for="pais">Pais</label>
                 </div>
             </div>

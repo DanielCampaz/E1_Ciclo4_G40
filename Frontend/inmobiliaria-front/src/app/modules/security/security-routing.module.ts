@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CrearInmuebleComponent } from 'src/app/inmueble/crear-inmueble/crear-inmueble.component';
 import { LoginComponent } from './login/login.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
@@ -21,11 +22,11 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: "reset-password",
-    component: ResetPasswordComponent
+    path: "perfil/inmueble/subir",
+    component: CrearInmuebleComponent
   },
   {
-    path:"user",
+    path:"usuarios",
     component: GetUserComponent
   },
   {

@@ -11,7 +11,7 @@ import { UserCredentialsModel } from '../models/user-credencials.model';
 })
 export class SeguridadService {
 
-  url:string = GeneralData.BUSINESS_URL;
+  url: string = GeneralData.BUSINESS_URL;
 
   constructor(private http: HttpClient) { }
 
@@ -29,23 +29,37 @@ export class SeguridadService {
   }
 
   Crearusuario(modelo: UserCredentialsModel): Observable<ModeloIdentificar> {
-    return this.http.post(`${this.url}/usuarios`, modelo ,{
+    return this.http.post(`${this.url}/usuarios`, modelo, {
       headers: new HttpHeaders({
 
       })
     })
   }
 
-  Solicitarusuario():Observable<UserModel>{
-    return this.http.get<UserModel>(`${this.url}/usuarios`)
+  Solicitarusuario(id:string): Observable<UserModel> {
+    return this.http.get<UserModel>(`${this.url}/usuarios/${id}`)
   }
-  
-  RecuperarContrasena(correo:string):Observable<UserModel>{
-    return this.http.post(`${this.url}/recuperar-contrasena`,correo,{
+
+  RecuperarContrasena(correo: string): Observable<UserModel> {
+    return this.http.post(`${this.url}/recuperar-contrasena`, correo, {
       headers: new HttpHeaders({
 
       })
     })
+  }
+
+  ActualizarDatos(modelo: UserModel): Observable<UserModel> {
+    return this.http.patch(`${this.url}/usuarios/${modelo._id}`, modelo, {
+          headers: new HttpHeaders({
+
+          }
+        )
+    }
+    )
+  }
+
+  EleimnarPerfil(id:string){
+    return this.http.delete(`${this.url}/usuarios/${id}`)
   }
 
 }

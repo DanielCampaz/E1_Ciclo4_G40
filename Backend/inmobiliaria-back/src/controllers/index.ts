@@ -7,3 +7,4 @@ export * from './usuario.controller';
 export * from './imagen.controller';
 export * from './ubicacion.controller';
 export * from './zona.controller';
+export * from './inmueble-usuario.controller';

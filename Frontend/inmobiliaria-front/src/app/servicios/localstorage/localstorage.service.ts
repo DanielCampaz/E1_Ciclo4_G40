@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { ModeloIdentificar } from 'src/app/modelos/identificar.modelo';
+import { SeguridadService } from '../seguridad.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LocalstorageService {
 
-  constructor() { }
+  constructor(
+    private servicioSeguridad: SeguridadService
+  ) { }
 
   savesessiondata(data:ModeloIdentificar):boolean{
     let saved = localStorage.getItem("session-data_inmobiliaria");
@@ -43,4 +46,19 @@ export class LocalstorageService {
       return null
     }
   }
+
+  actualizarsesion(id:string) {
+    let datausuarionew = new ModeloIdentificar
+    datausuarionew.token = this.gettoken();
+    this.servicioSeguridad.Solicitarusuario(id).subscribe((datos: any) => {
+      datausuarionew.usuario = datos
+      this.removesessiondata()
+      this.savesessiondata(datausuarionew)
+      return true
+    }, (error: any) => {
+      return false
+    }
+    )
+  }
+
 }

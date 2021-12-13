@@ -17,7 +17,6 @@ export class SignUpComponent implements OnInit {
 
   form: FormGroup = new FormGroup({});
 
-
   constructor(
     private fb: FormBuilder,
     private servicioSeguridad: SeguridadService,

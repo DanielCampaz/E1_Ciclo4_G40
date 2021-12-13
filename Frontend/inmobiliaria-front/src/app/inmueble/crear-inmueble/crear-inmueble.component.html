@@ -1,0 +1,105 @@
+<div class="container">
+    <div class="row">
+        <form class="col s12" >
+            <div class="row">
+                <h3>Formulario Subida Inmueble</h3>
+                <br>
+                <h6>Informacion Basica</h6>
+                <div class="input-field col s6">
+                    <textarea formControlName="descripcion" id="textarea1" class="materialize-textarea"></textarea>
+                    <label for="textarea1">Descripcion</label>
+                </div>
+                <div class="input-field col s6">
+                    <input formControlName="tipo" placeholder="Tipo" id="tipo" type="number" class="active validate" required>
+                    <label for="tipo">Tipo: 1.Casa | 2.Apartamento</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input formControlName="habitaciones" placeholder="# Habitaciones" id="habitaciones" type="number" class="active validate"
+                        required>
+                    <label for="habitaciones"># Habitaciones</label>
+                </div>
+                <div class="input-field col s6">
+                    <input formControlName="banos" placeholder="# Baños" id="banos" type="number" class="active validate" required>
+                    <label for="banos"># Baños</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input formControlName="precio" placeholder="Precio Por Mes" id="precio" type="number" class="active validate" required>
+                    <label for="precio">Precio Por Mes</label>
+                </div>
+                <div class="input-field col s6">
+                    <input formControlName="t_pub" placeholder="1. Activo/ 2. Inactivo" id="publ" type="number" class="active validate"
+                        required>
+                    <label for="publ">1. Activo/ 2. Inactivo</label>
+                </div>
+            </div>
+            <h6>Zona</h6>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input formControlName="ciudad" placeholder="Ciudad" id="ciudad" type="text" class="active validate" required>
+                    <label for="ciudad">Ciudad</label>
+                </div>
+                <div class="input-field col s6">
+                    <input formControlName="pais" placeholder="Pais" id="paisZ" type="text" class="active validate" required>
+                    <label for="paisZ">Pais</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input formControlName="localidad" placeholder="Localidad" id="localidad" type="text" class="active validate" required>
+                    <label for="localidad">Localidad</label>
+                </div>
+                <div class="input-field col s6">
+                    <input formControlName="barrio" placeholder="Barrio" id="barrio" type="text" class="active validate" required>
+                    <label for="barrio">Barrio</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input formControlName="direccion" placeholder="Direccion" id="direccion" type="text" class="active validate" required>
+                    <label for="direccion">Direccion</label>
+                </div>
+                <div class="input-field col s6">
+                    <input formControlName="departamento" placeholder="Departamento" id="departamento" type="text" class="active validate" required>
+                    <label for="departamento">Departamento</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input formControlName="estrato" placeholder="Estrato" id="estrato" type="text" class="active validate" required>
+                    <label for="estrato">Estrato</label>
+                </div>
+                <div class="input-field col s6">
+                    <input formControlName="nombre" placeholder="Nombre" id="nombre" type="text" class="active validate" required>
+                    <label for="nombre">Nombre</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input formControlName="ubicacion" placeholder="Ubicacion (Punto Cardinal)" id="ubicacion" type="text" class="active validate"
+                        required>
+                    <label for="ubicacion">Ubicacion (Punto Cardinal)</label>
+                </div>
+            </div>
+            <h6>Imagenes</h6>
+            <div class="file-field input-field">
+                <div class="btn">
+                    <span>File</span>
+                    <input formControlName="imagenes" type="file" multiple>
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <a class="waves-effect waves-light btn" (click)="crearinmueble()">Guardar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<br>

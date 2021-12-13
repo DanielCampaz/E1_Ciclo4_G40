@@ -4,6 +4,7 @@ import { GeneralData } from 'src/app/config/general-data';
 import { UserCredentialsModel } from 'src/app/models/user-credencials.model';
 import { MD5 } from 'crypto-js';
 import { SeguridadService } from 'src/app/servicios/seguridad.service';
+import { Router } from '@angular/router';
 
 declare const OpenGeneralMessageModal: any;
 
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private servicioSeguridad: SeguridadService
+    private servicioSeguridad: SeguridadService,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -45,11 +47,12 @@ export class LoginComponent implements OnInit {
       modelo.ciudad = " "
       modelo.pais = " "
       this.servicioSeguridad.Crearusuario(modelo).subscribe((datos: any) => {
-        
         console.log(datos)
+        this.router.navigate(["/security/singup"])
       }, (error: any) => {
         //ok
         console.log(error)
+        OpenGeneralMessageModal("Error Al Crear Usuario")
       })
     }
   }
